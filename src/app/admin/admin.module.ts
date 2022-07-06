@@ -5,6 +5,8 @@ import { AdmincreateComponent } from './admincreate/admincreate.component';
 import { AdmineditComponent } from './adminedit/adminedit.component';
 import { AdmindetailsComponent } from './admindetails/admindetails.component';
 import {RouterModule} from '@angular/router'
+import {HttpClientModule} from '@angular/common/http'
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -16,13 +18,19 @@ import {RouterModule} from '@angular/router'
     AdmindetailsComponent
   ],
   imports: [
+    ReactiveFormsModule,
     CommonModule,
     RouterModule.forChild([
-      {path:'adminhome',component:AdminhomeComponent}
-    ])
+      {path:'adminhome',component:AdminhomeComponent},
+      {path:'adminhome/admincreate', component:AdmincreateComponent},
+      {path:'admindetails/:id',component:AdmindetailsComponent},
+      {path:'adminedit/:id',component:AdmineditComponent}
+      
+    ]),
+    HttpClientModule
   ],
   exports:[
-    AdminModule
+    // AdminModule
   ]
 })
 export class AdminModule { }

@@ -1,1 +1,69 @@
-<p>admincreate works!</p>
+<div class="container-fluid">
+    <h1>Add Admins</h1>
+    <form [formGroup]="addAdmins">
+      <div class="form-group">
+        <label>ID</label>
+        <input [class.is-invalid]="addAdmins.get('id')?.invalid && addAdmins.get('id')?.touched" formControlName="id" type="text" class="form-control">
+        <div *ngIf="addAdmins.get('id')?.invalid && addAdmins.get('id')?.touched">
+            <small *ngIf="addAdmins.get('id')?.errors?.['required']" class="text-danger">
+              ID is required!
+            </small>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>First Name</label>
+        <input [class.is-invalid]="addAdmins.get('first_name')?.invalid && addAdmins.get('first_name')?.touched" formControlName="first_name" type="text" class="form-control">
+        <div *ngIf="addAdmins.get('first_name')?.invalid && addAdmins.get('first_name')?.touched">
+            <small *ngIf="addAdmins.get('first_name')?.errors?.['required']" class="text-danger">
+              First Name is required!
+            </small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Last Name</label>
+        <input [class.is-invalid]="addAdmins.get('last_name')?.invalid && addAdmins.get('last_name')?.touched" formControlName="last_name" type="text" class="form-control">
+        <div *ngIf="addAdmins.get('last_name')?.invalid && addAdmins.get('last_name')?.touched">
+            <small *ngIf="addAdmins.get('last_name')?.errors?.['required']" class="text-danger">
+              Last Name is required!
+            </small>
+        </div>
+      </div>
+      
+
+      <div class="form-group">
+        <label>Email</label>
+        <input [class.is-invalid]="addAdmins.get('email')?.invalid && addAdmins.get('email')?.touched" formControlName="email" type="text" class="form-control">
+        <div *ngIf="addAdmins.get('email')?.invalid && addAdmins.get('email')?.touched">
+            <small *ngIf="addAdmins.get('email')?.errors?.['required']" class="text-danger">
+              Email is required!
+            </small>
+        </div>
+        
+      
+      
+      </div>
+
+      <button routerLink="/adminhome" type="button" (click)="onSubmit(addAdmins.value)" [disabled]="addAdmins.invalid" class="btn btn-primary">Submit Form</button>
+      <button routerLink="/adminhome" type="button">Back</button>
+      
+      <!-- <button (click)="loadApiData()" class="btn btn-secondary">Load API data</button> -->
+
+      <!-- {{registrationForm.value|json}} -->
+
+    </form>
+      
+      
+      </div>
+
+      
+
+      
+
+     
+      
+
+      
+

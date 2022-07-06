@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Customer} from '../customer'
+import {CustomerService} from '../customer.service'
 @Component({
   selector: 'app-customer-home',
   templateUrl: './customer-home.component.html',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerHomeComponent implements OnInit {
 
-  constructor() { }
+  customerlist:Customer[]=[]
+  constructor(private customerservice:CustomerService) { }
 
   ngOnInit(): void {
+    this.customerservice.getCustomers().subscribe(data => this.customerlist= data)
   }
 
 }

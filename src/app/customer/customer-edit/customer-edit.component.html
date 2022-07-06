@@ -1,1 +1,82 @@
-<p>customer-edit works!</p>
+<div class="container-fluid">
+    <h1>Edit Customers</h1>
+    <form [formGroup]="editAdmins">
+      <div class="form-group">
+        <label>ID</label>
+        <input [class.is-invalid]="editAdmins.get('id')?.invalid && editAdmins.get('id')?.touched" formControlName="id" type="text" class="form-control">
+        <div *ngIf="editAdmins.get('id')?.invalid && editAdmins.get('id')?.touched">
+            <small *ngIf="editAdmins.get('id')?.errors?.['required']" class="text-danger">
+              ID is required!
+            </small>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>First Name</label>
+        <input [class.is-invalid]="editAdmins.get('first_name')?.invalid && editAdmins.get('first_name')?.touched" formControlName="first_name" type="text" class="form-control">
+        <div *ngIf="editAdmins.get('first_name')?.invalid && editAdmins.get('first_name')?.touched">
+            <small *ngIf="editAdmins.get('first_name')?.errors?.['required']" class="text-danger">
+              First Name is required!
+            </small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Last Name</label>
+        <input [class.is-invalid]="editAdmins.get('last_name')?.invalid && editAdmins.get('last_name')?.touched" formControlName="last_name" type="text" class="form-control">
+        <div *ngIf="editAdmins.get('last_name')?.invalid && editAdmins.get('last_name')?.touched">
+            <small *ngIf="editAdmins.get('last_name')?.errors?.['required']" class="text-danger">
+              Last Name is required!
+            </small>
+        </div>
+      </div>
+      
+
+      <div class="form-group">
+        <label>Gender</label>
+        <input [class.is-invalid]="editAdmins.get('gender')?.invalid && editAdmins.get('gender')?.touched" formControlName="gender" type="text" class="form-control">
+        <div *ngIf="editAdmins.get('gender')?.invalid && editAdmins.get('gender')?.touched">
+            <small *ngIf="editAdmins.get('gender')?.errors?.['required']" class="text-danger">
+              Gender is required!
+            </small>
+        </div>
+        
+      
+      
+      </div>
+
+      <div class="form-group">
+        <label>Age</label>
+        <input [class.is-invalid]="editAdmins.get('age')?.invalid && editAdmins.get('age')?.touched" formControlName="age" type="text" class="form-control">
+        <div *ngIf="editAdmins.get('age')?.invalid && editAdmins.get('age')?.touched">
+            <small *ngIf="editAdmins.get('age')?.errors?.['required']" class="text-danger">
+              Age is required!
+            </small>
+        </div>
+        
+      
+      
+      </div>
+
+      <button routerLink="/customerhome" (click)="onSubmit(editAdmins.value)" [disabled]="editAdmins.invalid" class="btn btn-primary">Submit Form</button>
+      <button routerLink="/customerhome">Back</button>
+      
+      <!-- <button (click)="loadApiData()" class="btn btn-secondary">Load API data</button> -->
+
+      <!-- {{registrationForm.value|json}} -->
+
+    </form>
+      
+      
+      </div>
+
+      
+
+      
+
+     
+      
+
+      
+

@@ -1,1 +1,69 @@
-<p>adminedit works!</p>
+<div class="container-fluid">
+    <h1>Add Admins</h1>
+    <form [formGroup]="editAdmins">
+      <div class="form-group">
+        <label>ID</label>
+        <input [class.is-invalid]="editAdmins.get('id')?.invalid && editAdmins.get('id')?.touched" formControlName="id" type="text" class="form-control">
+        <div *ngIf="editAdmins.get('id')?.invalid && editAdmins.get('id')?.touched">
+            <small *ngIf="editAdmins.get('id')?.errors?.['required']" class="text-danger">
+              ID is required!
+            </small>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>First Name</label>
+        <input [class.is-invalid]="editAdmins.get('first_name')?.invalid && editAdmins.get('first_name')?.touched" formControlName="first_name" type="text" class="form-control">
+        <div *ngIf="editAdmins.get('first_name')?.invalid && editAdmins.get('first_name')?.touched">
+            <small *ngIf="editAdmins.get('first_name')?.errors?.['required']" class="text-danger">
+              First Name is required!
+            </small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Last Name</label>
+        <input [class.is-invalid]="editAdmins.get('last_name')?.invalid && editAdmins.get('last_name')?.touched" formControlName="last_name" type="text" class="form-control">
+        <div *ngIf="editAdmins.get('last_name')?.invalid && editAdmins.get('last_name')?.touched">
+            <small *ngIf="editAdmins.get('last_name')?.errors?.['required']" class="text-danger">
+              Last Name is required!
+            </small>
+        </div>
+      </div>
+      
+
+      <div class="form-group">
+        <label>Email</label>
+        <input [class.is-invalid]="editAdmins.get('email')?.invalid && editAdmins.get('email')?.touched" formControlName="email" type="text" class="form-control">
+        <div *ngIf="editAdmins.get('email')?.invalid && editAdmins.get('email')?.touched">
+            <small *ngIf="editAdmins.get('email')?.errors?.['required']" class="text-danger">
+              Email is required!
+            </small>
+        </div>
+        
+      
+      
+      </div>
+
+      <button routerLink="/adminhome" (click)="onSubmit(editAdmins.value)" [disabled]="editAdmins.invalid" class="btn btn-primary">Submit Form</button>
+      <button routerLink="/adminhome">Back</button>
+      
+      <!-- <button (click)="loadApiData()" class="btn btn-secondary">Load API data</button> -->
+
+      <!-- {{registrationForm.value|json}} -->
+
+    </form>
+      
+      
+      </div>
+
+      
+
+      
+
+     
+      
+
+      
+

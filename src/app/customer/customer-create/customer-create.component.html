@@ -1,1 +1,88 @@
-<p>customer-create works!</p>
+<div class="container-fluid">
+    <h1>Add Customers</h1>
+    <form [formGroup]="addCustomers">
+      <div class="form-group">
+        <label>ID</label>
+        <input [class.is-invalid]="addCustomers.get('id')?.invalid && addCustomers.get('id')?.touched" formControlName="id" type="text" class="form-control">
+        <div *ngIf="addCustomers.get('id')?.invalid && addCustomers.get('id')?.touched">
+            <small *ngIf="addCustomers.get('id')?.errors?.['required']" class="text-danger">
+              ID is required!
+            </small>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>First Name</label>
+        <input [class.is-invalid]="addCustomers.get('first_name')?.invalid && addCustomers.get('first_name')?.touched" formControlName="first_name" type="text" class="form-control">
+        <div *ngIf="addCustomers.get('first_name')?.invalid && addCustomers.get('first_name')?.touched">
+            <small *ngIf="addCustomers.get('first_name')?.errors?.['required']" class="text-danger">
+              First Name is required!
+            </small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Last Name</label>
+        <input [class.is-invalid]="addCustomers.get('last_name')?.invalid && addCustomers.get('last_name')?.touched" formControlName="last_name" type="text" class="form-control">
+        <div *ngIf="addCustomers.get('last_name')?.invalid && addCustomers.get('last_name')?.touched">
+            <small *ngIf="addCustomers.get('last_name')?.errors?.['required']" class="text-danger">
+              Last Name is required!
+            </small>
+        </div>
+      </div>
+      
+
+      <div class="form-group">
+        <label>Gender</label>
+        <input [class.is-invalid]="addCustomers.get('gender')?.invalid && addCustomers.get('gender')?.touched" formControlName="gender" type="text" class="form-control">
+        <div *ngIf="addCustomers.get('gender')?.invalid && addCustomers.get('gender')?.touched">
+            <small *ngIf="addCustomers.get('gender')?.errors?.['required']" class="text-danger">
+            gender is required!
+            </small>
+        </div>
+
+
+        
+      
+      
+      </div>
+
+      <div class="form-group">
+        <label>Age</label>
+        <input [class.is-invalid]="addCustomers.get('age')?.invalid && addCustomers.get('age')?.touched" formControlName="age" type="text" class="form-control">
+        <div *ngIf="addCustomers.get('age')?.invalid && addCustomers.get('age')?.touched">
+            <small *ngIf="addCustomers.get('age')?.errors?.['required']" class="text-danger">
+                Age is required!
+            </small>
+        </div>
+
+        
+        
+      
+      
+      </div>
+
+      <button routerLink="/customerhome" (click)="onSubmit(addCustomers.value)" [disabled]="addCustomers.invalid" class="btn btn-primary" type="button">Submit Form</button>
+      <button routerLink="/customerhome" type="button">Back</button>
+      
+      
+      <!-- <button (click)="loadApiData()" class="btn btn-secondary">Load API data</button> -->
+
+      <!-- {{registrationForm.value|json}} -->
+
+    </form>
+      
+      
+      </div>
+
+      
+
+      
+
+     
+      
+
+      
+
+

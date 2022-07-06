@@ -1,1 +1,19 @@
-<p>adminhome works!</p>
+<h1>Admins</h1>
+
+<button routerLink="admincreate">Add Admin to List</button>
+<h2>List of Admins</h2>
+
+<ul>
+    <li *ngFor="let admin of adminlist">
+        {{admin.first_name}}
+        <button [routerLink]="['/admindetails',admin.id]">Details</button>
+        <button [routerLink]="['/adminedit',admin.id]">Edit </button>
+        <button>Delete</button>
+        <br>
+        
+        
+    </li>
+    <button routerLink="">Back</button>
+</ul>
+
+

@@ -1,1 +1,17 @@
-<p>customer-home works!</p>
+<h1>Customer</h1>
+
+<button routerLink="/customercreate">Add Customers to list</button>
+<h2>List of Customers</h2>
+
+<ul>
+    <li *ngFor="let customer of customerlist">
+        {{customer.first_name}}
+        <button [routerLink]="['/customerdetails',customer.id]">Details</button>
+        <button [routerLink]="['/customeredit',customer.id]">Edit </button>
+        <button>Delete</button>
+        <br>
+        
+        
+    </li>
+    <button routerLink="">Back</button>
+</ul>
