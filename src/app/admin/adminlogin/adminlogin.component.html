@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <h1>Adminstration LogIn page</h1>
+    <form [formGroup]="adminlogin">
+      <div class="form-group">
+        <label>Username</label>
+        <input [class.is-invalid]="adminlogin.get('username')?.invalid && adminlogin.get('username')?.touched" formControlName="username" type="text" class="form-control">
+        <div *ngIf="adminlogin.get('username')?.invalid && adminlogin.get('username')?.touched">
+            <small *ngIf="adminlogin.get('username')?.errors?.['required']" class="text-danger">
+              ID is required!
+            </small>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input [class.is-invalid]="adminlogin.get('password')?.invalid && adminlogin.get('password')?.touched" formControlName="password" type="password" class="form-control">
+        <div *ngIf="adminlogin.get('password')?.invalid && adminlogin.get('password')?.touched">
+            <small *ngIf="adminlogin.get('password')?.errors?.['required']" class="text-danger">
+              Password is required
+            </small>
+        </div>
+      </div>
+      <button routerLink="adminhome" (click)="check(adminlogin.value.username,adminlogin.value.password)" [disabled]="adminlogin.invalid" type="button">LogIn</button>
+      <button routerLink="" type="button">Back</button>
+      
+    </form> 
+</div> 

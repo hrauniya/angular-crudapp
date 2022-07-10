@@ -5,7 +5,9 @@ import { CustomerCreateComponent } from './customer-create/customer-create.compo
 import { CustomerEditComponent } from './customer-edit/customer-edit.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import {RouterModule} from '@angular/router';
-import {ReactiveFormsModule} from '@angular/forms'
+import {ReactiveFormsModule} from '@angular/forms';
+import { CustomerloginComponent } from './customerlogin/customerlogin.component';
+import { CustomerregistrationComponent } from './customerregistration/customerregistration.component';
 
 
 
@@ -14,18 +16,20 @@ import {ReactiveFormsModule} from '@angular/forms'
     CustomerHomeComponent,
     CustomerCreateComponent,
     CustomerEditComponent,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
+    CustomerloginComponent,
+    CustomerregistrationComponent,
+  
   ],
   imports: [
     ReactiveFormsModule,
     CommonModule,
     RouterModule.forChild([
-      {path:'customerhome',component:CustomerHomeComponent},
-      {path:'customercreate',component:CustomerCreateComponent},
-      {path:'customeredit/:id',component:CustomerEditComponent},
-      {path:'customerdetails/:id', component:CustomerDetailsComponent}
+      {path:"customerlogin",component:CustomerloginComponent},
+      {path:"customerlogin/customerregister",component:CustomerregistrationComponent}
 
     ])
   ], 
+
 })
 export class CustomerModule { }

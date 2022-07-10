@@ -6,9 +6,9 @@
 <ul>
     <li *ngFor="let admin of adminlist">
         {{admin.first_name}}
-        <button [routerLink]="['/admindetails',admin.id]">Details</button>
-        <button [routerLink]="['/adminedit',admin.id]">Edit </button>
-        <button>Delete</button>
+        <button [routerLink]="['admindetails',admin.id]">Details</button>
+        <button [routerLink]="['adminedit',admin.id]">Edit </button>
+        <button (click)="onDelete(admin.id)">Delete</button>
         <br>
         
         

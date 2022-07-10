@@ -7,6 +7,9 @@ import { AdmindetailsComponent } from './admindetails/admindetails.component';
 import {RouterModule} from '@angular/router'
 import {HttpClientModule} from '@angular/common/http'
 import {ReactiveFormsModule} from '@angular/forms';
+import { AdminloginComponent } from './adminlogin/adminlogin.component';
+import { AdminLoginAuthGuard } from '../admin-login-auth.guard';
+
 
 
 
@@ -15,16 +18,20 @@ import {ReactiveFormsModule} from '@angular/forms';
     AdminhomeComponent,
     AdmincreateComponent,
     AdmineditComponent,
-    AdmindetailsComponent
+    AdmindetailsComponent,
+    AdminloginComponent
   ],
   imports: [
     ReactiveFormsModule,
     CommonModule,
     RouterModule.forChild([
-      {path:'adminhome',component:AdminhomeComponent},
-      {path:'adminhome/admincreate', component:AdmincreateComponent},
-      {path:'admindetails/:id',component:AdmindetailsComponent},
-      {path:'adminedit/:id',component:AdmineditComponent}
+        
+        {path:'adminlogin',component:AdminloginComponent},
+        
+        {path:'adminlogin/adminhome',component:AdminhomeComponent,canActivate:[AdminLoginAuthGuard]},
+        {path:'adminlogin/adminhome/admincreate', component:AdmincreateComponent},
+        {path:'adminlogin/adminhome/admindetails/:id',component:AdmindetailsComponent},
+        {path:'adminlogin/adminhome/adminedit/:id',component:AdmineditComponent}
       
     ]),
     HttpClientModule
