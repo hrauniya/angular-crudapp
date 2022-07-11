@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AdmindetailsComponent implements OnInit {
   
-  curadmin:Admin= {id:0,first_name:"",last_name:"",email:""};
+  curadmin:Admin= {id:0,first_name:"",last_name:"",email:"",username:"",password:""};
   showid:number=0
 
   constructor(private adminservice:AdminService,private a:ActivatedRoute) {

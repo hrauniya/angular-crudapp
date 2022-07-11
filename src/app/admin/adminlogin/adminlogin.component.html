@@ -6,7 +6,7 @@
         <input [class.is-invalid]="adminlogin.get('username')?.invalid && adminlogin.get('username')?.touched" formControlName="username" type="text" class="form-control">
         <div *ngIf="adminlogin.get('username')?.invalid && adminlogin.get('username')?.touched">
             <small *ngIf="adminlogin.get('username')?.errors?.['required']" class="text-danger">
-              ID is required!
+              Username is required!
             </small>
 
         </div>
@@ -21,7 +21,7 @@
             </small>
         </div>
       </div>
-      <button routerLink="adminhome" (click)="check(adminlogin.value.username,adminlogin.value.password)" [disabled]="adminlogin.invalid" type="button">LogIn</button>
+      <button  (click)="isLoggedIn()" [disabled]="adminlogin.invalid" type="button">LogIn</button>
       <button routerLink="" type="button">Back</button>
       
     </form> 

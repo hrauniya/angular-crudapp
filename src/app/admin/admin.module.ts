@@ -8,7 +8,8 @@ import {RouterModule} from '@angular/router'
 import {HttpClientModule} from '@angular/common/http'
 import {ReactiveFormsModule} from '@angular/forms';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
-import { AdminLoginAuthGuard } from '../admin-login-auth.guard';
+import { ViewcustomersComponent } from './viewcustomers/viewcustomers.component';
+// import { AdminLoginAuthGuard } from '../admin-login-auth.guard';
 
 
 
@@ -19,7 +20,8 @@ import { AdminLoginAuthGuard } from '../admin-login-auth.guard';
     AdmincreateComponent,
     AdmineditComponent,
     AdmindetailsComponent,
-    AdminloginComponent
+    AdminloginComponent,
+    ViewcustomersComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -28,8 +30,9 @@ import { AdminLoginAuthGuard } from '../admin-login-auth.guard';
         
         {path:'adminlogin',component:AdminloginComponent},
         
-        {path:'adminlogin/adminhome',component:AdminhomeComponent,canActivate:[AdminLoginAuthGuard]},
+        {path:'adminlogin/adminhome',component:AdminhomeComponent},
         {path:'adminlogin/adminhome/admincreate', component:AdmincreateComponent},
+        {path:'adminlogin/adminhome/viewcustomers',component:ViewcustomersComponent},
         {path:'adminlogin/adminhome/admindetails/:id',component:AdmindetailsComponent},
         {path:'adminlogin/adminhome/adminedit/:id',component:AdmineditComponent}
       

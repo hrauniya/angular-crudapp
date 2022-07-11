@@ -13,7 +13,7 @@ import {Customer} from '../customer'
 export class CustomerEditComponent implements OnInit {
 
   showid:number=0
-  curadmin:Customer={id:0,first_name:"",last_name:"",gender:"",age:0};
+  curadmin:Customer={id:0,first_name:"",last_name:"",email:"",username:"",password:""};
   editAdmins:any
 
   constructor(private fb:FormBuilder,private adminservice:CustomerService,private http:HttpClient,private a:ActivatedRoute) {
@@ -22,8 +22,9 @@ export class CustomerEditComponent implements OnInit {
       id:[this.showid,[Validators.required]],
       first_name:[this.curadmin.first_name,[Validators.required]],
       last_name:[this.curadmin.last_name,[Validators.required]],
-      gender:[this.curadmin.gender,[Validators.required]],
-      age:[this.curadmin.age,[Validators.required]]
+      email:[this.curadmin.email,[Validators.required]],
+      username:[this.curadmin.username,[Validators.required]],
+      password:[this.curadmin.password,[Validators.required]]
     });
    }
 
@@ -35,8 +36,9 @@ export class CustomerEditComponent implements OnInit {
           id:[this.showid,[Validators.required]],
           first_name:[this.curadmin.first_name,[Validators.required]],
           last_name:[this.curadmin.last_name,[Validators.required]],
-          gender:[this.curadmin.gender,[Validators.required]],
-          age:[this.curadmin.age,[Validators.required]]
+          email:[this.curadmin.email,[Validators.required]],
+          username:[this.curadmin.username,[Validators.required]],
+          password:[this.curadmin.password,[Validators.required]]
         });})
     }
     )

@@ -1,16 +1,7 @@
 <div class="container-fluid">
-    <h1>Add Customers</h1>
+    <h1>Register yourself</h1>
     <form [formGroup]="addCustomers">
-      <div class="form-group">
-        <label>ID</label>
-        <input [class.is-invalid]="addCustomers.get('id')?.invalid && addCustomers.get('id')?.touched" formControlName="id" type="text" class="form-control">
-        <div *ngIf="addCustomers.get('id')?.invalid && addCustomers.get('id')?.touched">
-            <small *ngIf="addCustomers.get('id')?.errors?.['required']" class="text-danger">
-              ID is required!
-            </small>
-
-        </div>
-      </div>
+      
 
       <div class="form-group">
         <label>First Name</label>
@@ -31,40 +22,66 @@
             </small>
         </div>
       </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input [class.is-invalid]="addCustomers.get('email')?.invalid && addCustomers.get('email')?.touched" formControlName="email" type="text" class="form-control">
+      <div *ngIf="addCustomers.get('email')?.invalid && addCustomers.get('email')?.touched">
+        <small *ngIf="addCustomers.get('email')?.errors?.['required']" class="text-danger">
+          Email is required!
+        </small>
+
+      </div>
+    </div>
       
 
       <div class="form-group">
-        <label>Gender</label>
-        <input [class.is-invalid]="addCustomers.get('gender')?.invalid && addCustomers.get('gender')?.touched" formControlName="gender" type="text" class="form-control">
-        <div *ngIf="addCustomers.get('gender')?.invalid && addCustomers.get('gender')?.touched">
-            <small *ngIf="addCustomers.get('gender')?.errors?.['required']" class="text-danger">
-            gender is required!
-            </small>
+        <label>Username</label>
+        <input [class.is-invalid]="addCustomers.get('username')?.invalid && addCustomers.get('username')?.touched" formControlName="username" type="text" class="form-control">
+        <div *ngIf="addCustomers.get('username')?.invalid && addCustomers.get('username')?.touched">
+          <small *ngIf="addCustomers.get('username')?.errors?.['required']" class="text-danger">
+            Username is required!
+          </small>
+          <small *ngIf="addCustomers.get('username')?.errors?.['minlength']" class="text-danger">
+            Length of username should be greater than 5 characters!
+          </small>
+          <small *ngIf="addCustomers.get('username')?.errors?.['forbiddenname']" class="text-danger">
+            {{addCustomers.get('username')?.errors?.['forbiddenname'].value}} username is not allowed!
+          </small>
+
         </div>
-
-
-        
+      </div>
       
-      
+
+      <div class="form-group">
+        <label>Password</label>
+        <input [class.is-invalid]="addCustomers.get('password')?.invalid && addCustomers.get('password')?.touched" formControlName="password"  type="password" class="form-control">
+        <div *ngIf="addCustomers.get('password')?.invalid && addCustomers.get('password')?.touched" >
+        <small *ngIf="addCustomers.get('password')?.errors?.['required']" class="text-danger">
+          Password is required!
+        </small>
+        <small *ngIf="addCustomers.get('password')?.errors?.['minlength']" class="text-danger">
+          Length of username should be greater than 8 characters!
+        </small>
+      </div>
       </div>
 
       <div class="form-group">
-        <label>Age</label>
-        <input [class.is-invalid]="addCustomers.get('age')?.invalid && addCustomers.get('age')?.touched" formControlName="age" type="text" class="form-control">
-        <div *ngIf="addCustomers.get('age')?.invalid && addCustomers.get('age')?.touched">
-            <small *ngIf="addCustomers.get('age')?.errors?.['required']" class="text-danger">
-                Age is required!
-            </small>
-        </div>
+        <label>Confirm Password</label>
+        <input [class.is-invalid]="addCustomers.errors?.['mismatch'] && addCustomers.get('confirmpassword')?.dirty" formControlName="confirmpassword" type="password" class="form-control">
+        <small *ngIf="addCustomers.errors?.['mismatch'] && addCustomers.get('confirmpassword')?.dirty" class="text-danger">
+          Passwords do not match. Enter same passwords!
 
-        
-        
-      
-      
+        </small>
       </div>
 
-      <button routerLink="/customerhome" (click)="onSubmit(addCustomers.value)" [disabled]="addCustomers.invalid" class="btn btn-primary" type="button">Submit Form</button>
-      <button routerLink="/customerhome" type="button">Back</button>
+        
+        
+      
+      
+
+      <button routerLink="/customerlogin" (click)="onSubmit(addCustomers.value)" [disabled]="addCustomers.invalid" class="btn btn-primary" type="button">Register</button>
+      <button routerLink="/customerlogin" type="button">Back</button>
       
       
       <!-- <button (click)="loadApiData()" class="btn btn-secondary">Load API data</button> -->

@@ -14,7 +14,7 @@ import {Admin} from '../admin'
 export class AdmineditComponent implements OnInit {
 
   showid:number=0
-  curadmin:Admin={id:0,first_name:"",last_name:"",email:""};
+  curadmin:Admin={id:0,first_name:"",last_name:"",email:"",username:"",password:""};
   editAdmins:any
 
   constructor(private fb:FormBuilder,private adminservice:AdminService,private http:HttpClient,private a:ActivatedRoute) {
@@ -23,7 +23,9 @@ export class AdmineditComponent implements OnInit {
       id:[this.showid,[Validators.required]],
       first_name:[this.curadmin.first_name,[Validators.required]],
       last_name:[this.curadmin.last_name,[Validators.required]],
-      email:[this.curadmin.email,[Validators.required]]
+      email:[this.curadmin.email,[Validators.required]],
+      username:[this.curadmin.username,[Validators.required]],
+      password:[this.curadmin.password,[Validators.required]]
     });
    }
 

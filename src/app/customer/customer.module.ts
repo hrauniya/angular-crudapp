@@ -26,7 +26,10 @@ import { CustomerregistrationComponent } from './customerregistration/customerre
     CommonModule,
     RouterModule.forChild([
       {path:"customerlogin",component:CustomerloginComponent},
-      {path:"customerlogin/customerregister",component:CustomerregistrationComponent}
+      {path:"customerlogin/customerhome",component:CustomerHomeComponent},
+      {path:"customerlogin/customercreate",component:CustomerCreateComponent},
+      {path:"customerlogin/customerhome/customerdetails/:id",component:CustomerDetailsComponent},
+      {path:"customerlogin/customerhome/customeredit/:id",component:CustomerEditComponent}
 
     ])
   ], 

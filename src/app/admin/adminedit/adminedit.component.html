@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <h1>Add Admins</h1>
+    <h1>Edit Admins</h1>
     <form [formGroup]="editAdmins">
       <div class="form-group">
         <label>ID</label>
@@ -47,7 +47,7 @@
       </div>
 
       <button routerLink="/adminhome" (click)="onSubmit(editAdmins.value)" [disabled]="editAdmins.invalid" class="btn btn-primary">Submit Form</button>
-      <button routerLink="/adminhome">Back</button>
+      <button routerLink="/adminlogin/adminhome">Back</button>
       
       <!-- <button (click)="loadApiData()" class="btn btn-secondary">Load API data</button> -->
 

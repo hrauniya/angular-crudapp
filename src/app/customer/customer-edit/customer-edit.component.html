@@ -34,11 +34,11 @@
       
 
       <div class="form-group">
-        <label>Gender</label>
-        <input [class.is-invalid]="editAdmins.get('gender')?.invalid && editAdmins.get('gender')?.touched" formControlName="gender" type="text" class="form-control">
-        <div *ngIf="editAdmins.get('gender')?.invalid && editAdmins.get('gender')?.touched">
-            <small *ngIf="editAdmins.get('gender')?.errors?.['required']" class="text-danger">
-              Gender is required!
+        <label>Email</label>
+        <input [class.is-invalid]="editAdmins.get('email')?.invalid && editAdmins.get('email')?.touched" formControlName="email" type="text" class="form-control">
+        <div *ngIf="editAdmins.get('email')?.invalid && editAdmins.get('email')?.touched">
+            <small *ngIf="editAdmins.get('email')?.errors?.['required']" class="text-danger">
+              Email is required!
             </small>
         </div>
         
@@ -46,21 +46,12 @@
       
       </div>
 
-      <div class="form-group">
-        <label>Age</label>
-        <input [class.is-invalid]="editAdmins.get('age')?.invalid && editAdmins.get('age')?.touched" formControlName="age" type="text" class="form-control">
-        <div *ngIf="editAdmins.get('age')?.invalid && editAdmins.get('age')?.touched">
-            <small *ngIf="editAdmins.get('age')?.errors?.['required']" class="text-danger">
-              Age is required!
-            </small>
-        </div>
-        
+          
       
       
-      </div>
 
       <button routerLink="/customerhome" (click)="onSubmit(editAdmins.value)" [disabled]="editAdmins.invalid" class="btn btn-primary">Submit Form</button>
-      <button routerLink="/customerhome">Back</button>
+      <button routerLink="/customerlogin/customerhome">Back</button>
       
       <!-- <button (click)="loadApiData()" class="btn btn-secondary">Load API data</button> -->
 

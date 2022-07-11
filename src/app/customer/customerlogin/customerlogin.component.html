@@ -14,16 +14,16 @@
 
       <div class="form-group">
         <label>Password</label>
-        <input [class.is-invalid]="customerlogin.get('password')?.invalid && customerlogin.get('password')?.touched" formControlName="password" type="text" class="form-control">
+        <input [class.is-invalid]="customerlogin.get('password')?.invalid && customerlogin.get('password')?.touched" formControlName="password" type="password" class="form-control">
         <div *ngIf="customerlogin.get('password')?.invalid && customerlogin.get('password')?.touched">
             <small *ngIf="customerlogin.get('password')?.errors?.['required']" class="text-danger">
               Password is required
             </small>
         </div>
       </div>
-      <button type="button">LogIn</button>
+      <button type="button" (click)="isLoggedIn()" [disabled]="customerlogin.invalid">LogIn</button>
       <button routerLink="" type="button">Back</button>
       <br>
-      <button routerLink="customerregister">Not Registered?Register</button>
+      <button routerLink="customercreate">Not Registered?Register</button>
     </form> 
 </div> 
