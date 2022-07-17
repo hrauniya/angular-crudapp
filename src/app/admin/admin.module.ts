@@ -10,6 +10,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { ViewcustomersComponent } from './viewcustomers/viewcustomers.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { CreateproductComponent } from './createproduct/createproduct.component';
 // import { AdminLoginAuthGuard } from '../admin-login-auth.guard';
 
 
@@ -22,7 +23,8 @@ import { BrowserModule } from '@angular/platform-browser';
     AdmineditComponent,
     AdmindetailsComponent,
     AdminloginComponent,
-    ViewcustomersComponent
+    ViewcustomersComponent,
+    CreateproductComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -32,6 +34,7 @@ import { BrowserModule } from '@angular/platform-browser';
         {path:'adminlogin',component:AdminloginComponent},
         
         {path:'adminlogin/adminhome',component:AdminhomeComponent},
+        {path:'adminlogin/adminhome/addproduct',component:CreateproductComponent},
         {path:'adminlogin/adminhome/admincreate', component:AdmincreateComponent},
         {path:'adminlogin/adminhome/viewcustomers',component:ViewcustomersComponent},
         {path:'adminlogin/adminhome/admindetails/:id',component:AdmindetailsComponent},

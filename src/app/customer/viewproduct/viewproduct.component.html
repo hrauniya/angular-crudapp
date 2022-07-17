@@ -1,0 +1,13 @@
+<h1>List of Products</h1>
+<div>
+    <ul *ngFor="let product of productlist">
+       
+       <li>Product Name:{{product.productname}}</li> 
+        Price:{{product.price}}
+        Quantity:{{product.quantity}}
+
+        <br>   
+    </ul>
+
+</div>
+<button routerLink="/customerlogin/customerhome/">Back</button>

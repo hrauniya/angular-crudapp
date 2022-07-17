@@ -8,6 +8,7 @@ import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import { CustomerloginComponent } from './customerlogin/customerlogin.component';
 import { CustomerregistrationComponent } from './customerregistration/customerregistration.component';
+import { ViewproductComponent } from './viewproduct/viewproduct.component';
 
 
 
@@ -19,6 +20,7 @@ import { CustomerregistrationComponent } from './customerregistration/customerre
     CustomerDetailsComponent,
     CustomerloginComponent,
     CustomerregistrationComponent,
+    ViewproductComponent,
   
   ],
   imports: [
@@ -27,6 +29,7 @@ import { CustomerregistrationComponent } from './customerregistration/customerre
     RouterModule.forChild([
       {path:"customerlogin",component:CustomerloginComponent},
       {path:"customerlogin/customerhome",component:CustomerHomeComponent},
+      {path:"customerlogin/customerhome/viewproducts",component:ViewproductComponent},
       {path:"customerlogin/customercreate",component:CustomerCreateComponent},
       {path:"customerlogin/customerhome/customerdetails/:id",component:CustomerDetailsComponent},
       {path:"customerlogin/customerhome/customeredit/:id",component:CustomerEditComponent}

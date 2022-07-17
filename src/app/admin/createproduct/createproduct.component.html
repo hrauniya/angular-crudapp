@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <h1>Add Product</h1>
+    <form [formGroup]="productForm">
+      <div class="form-group">
+        <label>Product Name</label>
+        <input [class.is-invalid]="productForm.get('productname')?.invalid && productForm.get('productname')?.touched" formControlName="productname" type="text" class="form-control">
+        <div *ngIf="productForm.get('productname')?.invalid && productForm.get('productname')?.touched">
+            <small *ngIf="productForm.get('productname')?.errors?.['required']" class="text-danger">
+              Product Name is required!
+            </small>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Price</label>
+        <input [class.is-invalid]="productForm.get('price')?.invalid && productForm.get('price')?.touched" formControlName="price" type="number" class="form-control">
+        <div *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched">
+            <small *ngIf="productForm.get('price')?.errors?.['required']" class="text-danger">
+              Price is required
+            </small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Quantity</label>
+        <input [class.is-invalid]="productForm.get('quantity')?.invalid && productForm.get('quantity')?.touched" formControlName="quantity" type="number" class="form-control">
+        <div *ngIf="productForm.get('quantity')?.invalid && productForm.get('quantity')?.touched">
+            <small *ngIf="productForm.get('quantity')?.errors?.['required']" class="text-danger">
+              Quantity is required
+            </small>
+        </div>
+      </div>
+
+
+
+      <button routerLink="/adminlogin/adminhome" (click)="onSubmit(productForm.value)" [disabled]="productForm.invalid" type="button">Add Product</button>
+      <button routerLink="/adminlogin/adminhome" type="button">Back</button>
+      
+    </form> 
+</div> 
