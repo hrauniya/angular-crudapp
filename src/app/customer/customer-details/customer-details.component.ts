@@ -13,7 +13,8 @@ import {CustomerService} from '../customer.service'
 })
 export class CustomerDetailsComponent implements OnInit {
 
-  curadmin:Customer= {id:0,first_name:"",last_name:"",email:"",username:'', password:''};
+  curadmin!:Customer;
+  // curadmin:Customer= {id:0,first_name:"",last_name:"",email:"",username:'', password:''};
   showid:number=0
 
   constructor(private adminservice:CustomerService,private a:ActivatedRoute) {

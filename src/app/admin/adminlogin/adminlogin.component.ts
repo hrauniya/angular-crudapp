@@ -18,6 +18,7 @@ import { CuruserService } from 'src/app/curuser.service';
 export class AdminloginComponent implements OnInit {
 
   curuser:string=""
+  curid:number=-1
 
   constructor(private fb:FormBuilder,private adminloginservice:AdminLoginServiceService,private http:HttpClient,private router:Router,private getcuruser:CuruserService) {
     
@@ -38,7 +39,8 @@ export class AdminloginComponent implements OnInit {
       const user = data.find((a:any)=>{
         if (a.username===this.adminlogin.value.username && a.password===this.adminlogin.value.password){
           this.curuser=a.username
-          this.getcuruser.setcurrentuser(this.curuser)
+          this.curid=a.id
+          this.getcuruser.setcurrentuser(this.curuser,this.curid)
           return true
         }else{
           return false

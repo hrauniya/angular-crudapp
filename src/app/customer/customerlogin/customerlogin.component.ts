@@ -11,6 +11,7 @@ import { CuruserService } from 'src/app/curuser.service';
 })
 export class CustomerloginComponent implements OnInit {
   curuser:string=""
+  curid:number=-1
   constructor(private fb:FormBuilder,private http:HttpClient,private router:Router,private getcuruser:CuruserService) { }
 
   ngOnInit(): void {
@@ -27,7 +28,8 @@ export class CustomerloginComponent implements OnInit {
       const user = data.find((a:any)=>{
         if (a.username===this.customerlogin.value.username && a.password===this.customerlogin.value.password){
           this.curuser=a.username
-          this.getcuruser.setcurrentuser(this.curuser)
+          this.curid=a.id
+          this.getcuruser.setcurrentuser(this.curuser,this.curid)
           return true
         }else{
           return false

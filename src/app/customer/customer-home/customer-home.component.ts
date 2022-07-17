@@ -10,12 +10,15 @@ import {CustomerService} from '../customer.service'
 export class CustomerHomeComponent implements OnInit {
 
   curuser:string=""
-  customerlist:Customer[]=[]
+  curid!:number
+  // customerlist:Customer[]=[]
+  customer!:Customer
   constructor(private customerservice:CustomerService,private getcuruser:CuruserService) { }
 
   ngOnInit(): void {
     this.curuser=this.getcuruser.getcurrentuser()
-    this.customerservice.getCustomers().subscribe(data => this.customerlist= data)
+    this.curid=this.getcuruser.getcurrentuserid()
+    this.customerservice.getbyid(this.curid).subscribe(data => this.customer= data)
   }
 
 }

@@ -1,12 +1,13 @@
 
 <h1>Customers</h1>
-<div *ngFor="let customer in customerlist">
-    <ul>
-        <li>{{customer.id}}</li>
-        <li>{{customer.first_name</li>
-        <li>{{customer.last_name</li>
-        <li>{{customer.email}}</li>
-        <li>{{customer.username</li>    
+<div>
+    <ul *ngFor="let customer of customerlist">
+        <li>ID:{{customer.id}}</li>
+        <li>First Name:{{customer.first_name}}</li>
+        <li>Last Name:{{customer.last_name}}</li>
+        <li>Email:{{customer.email}}</li>
+        <li>Username:{{customer.username}}</li> 
+        <br>   
     </ul>
 
 </div>

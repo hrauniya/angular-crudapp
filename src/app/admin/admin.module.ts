@@ -9,6 +9,7 @@ import {HttpClientModule} from '@angular/common/http'
 import {ReactiveFormsModule} from '@angular/forms';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { ViewcustomersComponent } from './viewcustomers/viewcustomers.component';
+import { BrowserModule } from '@angular/platform-browser';
 // import { AdminLoginAuthGuard } from '../admin-login-auth.guard';
 
 
@@ -37,7 +38,8 @@ import { ViewcustomersComponent } from './viewcustomers/viewcustomers.component'
         {path:'adminlogin/adminhome/adminedit/:id',component:AdmineditComponent}
       
     ]),
-    HttpClientModule
+    HttpClientModule,
+    BrowserModule
   ],
   exports:[
     // AdminModule
