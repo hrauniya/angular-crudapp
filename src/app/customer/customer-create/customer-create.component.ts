@@ -28,12 +28,32 @@ export class CustomerCreateComponent implements OnInit {
   },{validators:passwordValidator});
 
   onSubmit(addCustomers:any){
-    // console.log(addAdmins)
-    let newcustomer={first_name:addCustomers.first_name,last_name:addCustomers.last_name,email:addCustomers.email,username:addCustomers.username,password:addCustomers.password}
-    this.http.post('http://localhost:3000/customer',newcustomer).subscribe(data => {
-      this.postId = data;
-      alert("Registration Successful!")
+    this.http.get<any>("http://localhost:3000/customer")
+    .subscribe(data=>{
+      const user = data.find((a:any)=>{
+        if (a.username===addCustomers.username){
+         
+          return true
+        }else{
+          return false
+        }
+      });
+      if (user){
+        alert("Username already exists! Please use another username")
+        this.addCustomers.reset()
+        
+      }else{
+        let newcustomer={first_name:addCustomers.first_name,last_name:addCustomers.last_name,email:addCustomers.email,username:addCustomers.username,password:addCustomers.password}
+        this.http.post('http://localhost:3000/customer',newcustomer).subscribe(data => {
+        this.postId = data;
+        alert("Registration Successful!")
+        
     })
+        
+      }
+    })
+    
+    
     // console.log(this.postId)
     
   }

@@ -29,11 +29,30 @@ export class AdmincreateComponent implements OnInit {
   },{validators:passwordValidator});
 
   onSubmit(addAdmins:any){
-    // console.log(addAdmins)
-    let newadmin={first_name:addAdmins.first_name,last_name:addAdmins.last_name,email:addAdmins.email,username:addAdmins.username,password:addAdmins.password}
-    this.http.post('http://localhost:3000/admin',newadmin).subscribe(data => {
-      this.postId = data;
+    this.http.get<any>("http://localhost:3000/admin")
+    .subscribe(data=>{
+      const user = data.find((a:any)=>{
+        if (a.username===addAdmins.username){
+         
+          return true
+        }else{
+          return false
+        }
+      });
+      if (user){
+        alert("Username already exists! Please use another username")
+        this.addAdmins.reset()
+        
+      }else{
+        let newadmin={first_name:addAdmins.first_name,last_name:addAdmins.last_name,email:addAdmins.email,username:addAdmins.username,password:addAdmins.password}
+        this.http.post('http://localhost:3000/admin',newadmin).subscribe(data => {
+        this.postId = data;
+        alert("Adding admin successful!")
     })
+        
+      }
+    })
+    
     // console.log(this.postId)
     
   }
