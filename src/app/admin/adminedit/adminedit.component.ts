@@ -5,6 +5,7 @@ import {FormBuilder} from '@angular/forms'
 import { ActivatedRoute } from '@angular/router';
 import { AdminService } from '../admin.service';
 import {Admin} from '../admin'
+import { forbiddenNameValidator } from 'src/app/shared/username-validator';
 
 @Component({
   selector: 'app-adminedit',
@@ -24,8 +25,7 @@ export class AdmineditComponent implements OnInit {
       first_name:[this.curadmin.first_name,[Validators.required]],
       last_name:[this.curadmin.last_name,[Validators.required]],
       email:[this.curadmin.email,[Validators.required]],
-      username:[this.curadmin.username,[Validators.required]],
-      password:[this.curadmin.password,[Validators.required]]
+      username:[this.curadmin.username,[Validators.required,Validators.minLength(4),forbiddenNameValidator]],
     });
    }
 
@@ -37,7 +37,8 @@ export class AdmineditComponent implements OnInit {
           id:[this.showid,[Validators.required]],
           first_name:[this.curadmin.first_name,[Validators.required]],
           last_name:[this.curadmin.last_name,[Validators.required]],
-          email:[this.curadmin.email,[Validators.required]]
+          email:[this.curadmin.email,[Validators.required]],
+          username:[this.curadmin.username,[Validators.required]]
         });})
     }
     )
@@ -49,6 +50,7 @@ export class AdmineditComponent implements OnInit {
 
   onSubmit(editAdmins:any){
     this.http.put('http://localhost:3000/admin/'+editAdmins.id,editAdmins).subscribe()
+    alert("Edit Complete!")
 
   }
 

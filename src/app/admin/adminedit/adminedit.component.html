@@ -46,7 +46,22 @@
       
       </div>
 
-      <button routerLink="/adminhome" (click)="onSubmit(editAdmins.value)" [disabled]="editAdmins.invalid" class="btn btn-primary">Submit Form</button>
+      <div class="form-group">
+        <label>Username</label>
+        <input [class.is-invalid]="editAdmins.get('username')?.invalid && editAdmins.get('username')?.touched" formControlName="username" type="text" class="form-control">
+        <div *ngIf="editAdmins.get('username')?.invalid && editAdmins.get('username')?.touched">
+            <small *ngIf="editAdmins.get('username')?.errors?.['required']" class="text-danger">
+              Username is required!
+            </small>
+        </div>
+        
+      
+      
+      </div>
+
+
+
+      <button routerLink="/adminlogin/adminhome" (click)="onSubmit(editAdmins.value)" [disabled]="editAdmins.invalid" class="btn btn-primary">Submit Form</button>
       <button routerLink="/adminlogin/adminhome">Back</button>
       
       <!-- <button (click)="loadApiData()" class="btn btn-secondary">Load API data</button> -->
