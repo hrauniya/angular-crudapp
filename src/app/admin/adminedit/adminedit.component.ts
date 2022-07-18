@@ -26,6 +26,7 @@ export class AdmineditComponent implements OnInit {
       last_name:[this.curadmin.last_name,[Validators.required]],
       email:[this.curadmin.email,[Validators.required]],
       username:[this.curadmin.username,[Validators.required,Validators.minLength(4),forbiddenNameValidator]],
+      password:[this.curadmin.password,[Validators.required,Validators.minLength(8)]]
     });
    }
 
@@ -38,7 +39,8 @@ export class AdmineditComponent implements OnInit {
           first_name:[this.curadmin.first_name,[Validators.required]],
           last_name:[this.curadmin.last_name,[Validators.required]],
           email:[this.curadmin.email,[Validators.required]],
-          username:[this.curadmin.username,[Validators.required]]
+          username:[this.curadmin.username,[Validators.required]],
+          password:[this.curadmin.password,[Validators.required,Validators.minLength(8)]]
         });})
     }
     )

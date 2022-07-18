@@ -50,6 +50,7 @@ export class CustomerEditComponent implements OnInit {
 
   onSubmit(editAdmins:any){
     this.http.put('http://localhost:3000/customer/'+editAdmins.id,editAdmins).subscribe()
+    alert("Edit Added!")
 
   }
 

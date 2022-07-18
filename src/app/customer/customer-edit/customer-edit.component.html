@@ -46,11 +46,37 @@
       
       </div>
 
+      <div class="form-group">
+        <label>Username</label>
+        <input [class.is-invalid]="editAdmins.get('username')?.invalid && editAdmins.get('username')?.touched" formControlName="username" type="text" class="form-control">
+        <div *ngIf="editAdmins.get('username')?.invalid && editAdmins.get('username')?.touched">
+            <small *ngIf="editAdmins.get('username')?.errors?.['required']" class="text-danger">
+              Username is required!
+            </small>
+        </div>
+        
+      
+      
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input  [class.is-invalid]="editAdmins.get('password')?.invalid && editAdmins.get('password')?.touched" formControlName="password" type="password" class="form-control">
+        <div *ngIf="editAdmins.get('password')?.invalid && editAdmins.get('password')?.touched">
+            <small *ngIf="editAdmins.get('password')?.errors?.['required']" class="text-danger">
+              Password  is required!
+            </small>
+        </div>
+        
+      
+      
+      </div>
+
           
       
       
 
-      <button routerLink="/customerhome" (click)="onSubmit(editAdmins.value)" [disabled]="editAdmins.invalid" class="btn btn-primary">Submit Form</button>
+      <button routerLink="/customerlogin/customerhome" (click)="onSubmit(editAdmins.value)" [disabled]="editAdmins.invalid" class="btn btn-primary">Submit Form</button>
       <button routerLink="/customerlogin/customerhome">Back</button>
       
       <!-- <button (click)="loadApiData()" class="btn btn-secondary">Load API data</button> -->
