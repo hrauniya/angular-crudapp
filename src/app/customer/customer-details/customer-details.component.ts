@@ -6,6 +6,8 @@ import {CustomerService} from '../customer.service'
 //change password option for individual customer
 //admin creates product
 //customer views product details
+
+//customer wishlist from products
 @Component({
   selector: 'app-customer-details',
   templateUrl: './customer-details.component.html',

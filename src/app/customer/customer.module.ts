@@ -9,6 +9,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { CustomerloginComponent } from './customerlogin/customerlogin.component';
 import { CustomerregistrationComponent } from './customerregistration/customerregistration.component';
 import { ViewproductComponent } from './viewproduct/viewproduct.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
 
 
 
@@ -21,6 +22,7 @@ import { ViewproductComponent } from './viewproduct/viewproduct.component';
     CustomerloginComponent,
     CustomerregistrationComponent,
     ViewproductComponent,
+    ChangepasswordComponent,
   
   ],
   imports: [
@@ -32,7 +34,8 @@ import { ViewproductComponent } from './viewproduct/viewproduct.component';
       {path:"customerlogin/customerhome/viewproducts",component:ViewproductComponent},
       {path:"customerlogin/customercreate",component:CustomerCreateComponent},
       {path:"customerlogin/customerhome/customerdetails/:id",component:CustomerDetailsComponent},
-      {path:"customerlogin/customerhome/customeredit/:id",component:CustomerEditComponent}
+      {path:"customerlogin/customerhome/customeredit/:id",component:CustomerEditComponent},
+      {path:"customerlogin/customerhome/changepassword/:id",component:ChangepasswordComponent}
 
     ])
   ], 
