@@ -4,10 +4,14 @@
        
        <li>Product Name:{{product.productname}}</li> 
         Price:{{product.price}}
+        <!-- ID:{{product.id}} -->
+        <br>
         Quantity:{{product.quantity}}
 
-        <br>   
+        <br> 
+        <button (click)="addToWishlist(product.id)">Add to Wishlist</button>  
     </ul>
+    
 
 </div>
 <button routerLink="/customerlogin/customerhome/">Back</button>

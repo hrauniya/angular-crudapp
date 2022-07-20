@@ -10,6 +10,7 @@ import { CustomerloginComponent } from './customerlogin/customerlogin.component'
 import { CustomerregistrationComponent } from './customerregistration/customerregistration.component';
 import { ViewproductComponent } from './viewproduct/viewproduct.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
+import { ViewwishlistComponent } from './viewwishlist/viewwishlist.component';
 
 
 
@@ -23,6 +24,7 @@ import { ChangepasswordComponent } from './changepassword/changepassword.compone
     CustomerregistrationComponent,
     ViewproductComponent,
     ChangepasswordComponent,
+    ViewwishlistComponent,
   
   ],
   imports: [
@@ -31,7 +33,8 @@ import { ChangepasswordComponent } from './changepassword/changepassword.compone
     RouterModule.forChild([
       {path:"customerlogin",component:CustomerloginComponent},
       {path:"customerlogin/customerhome",component:CustomerHomeComponent},
-      {path:"customerlogin/customerhome/viewproducts",component:ViewproductComponent},
+      {path:"customerlogin/customerhome/viewproducts/:id",component:ViewproductComponent},
+      {path:"customerlogin/customerhome/viewwishlist/:id",component:ViewwishlistComponent},
       {path:"customerlogin/customercreate",component:CustomerCreateComponent},
       {path:"customerlogin/customerhome/customerdetails/:id",component:CustomerDetailsComponent},
       {path:"customerlogin/customerhome/customeredit/:id",component:CustomerEditComponent},

@@ -1,0 +1,20 @@
+<h1>This is your wishlist:</h1>
+
+<div *ngIf="productlist.length!=0">
+    
+    <ul *ngFor="let product of productlist">
+        <li >
+           Product Name: {{product.productname}}
+            
+
+        </li>
+           Price: {{product.price}}
+    </ul>
+
+
+    
+</div>
+<div *ngIf="productlist.length==0">
+    <p>You have no products in your wishlist!</p>
+</div>
+<button routerLink="/customerlogin/customerhome/">Back</button>

@@ -16,7 +16,9 @@
         
     </li>
 
-    <button routerLink="viewproducts">View Products</button>
+    <button [routerLink]="['viewproducts',customer.id]">View Products</button>
+    <br>
+    <button [routerLink]="['viewwishlist',customer.id]">View Wishlist</button>
     <br>
     <button [routerLink]="['changepassword',customer.id]">Change Password</button>
     <br>

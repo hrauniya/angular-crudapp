@@ -46,7 +46,7 @@ export class AdmincreateComponent implements OnInit {
       }else{
         let newadmin={first_name:addAdmins.first_name,last_name:addAdmins.last_name,email:addAdmins.email,username:addAdmins.username,password:addAdmins.password}
         this.http.post('http://localhost:3000/admin',newadmin).subscribe(data => {
-        this.postId = data;
+        // this.postId = data;
         alert("Adding admin successful!")
     })
         
