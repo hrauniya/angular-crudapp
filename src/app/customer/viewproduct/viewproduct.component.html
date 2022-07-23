@@ -9,7 +9,10 @@
         Quantity:{{product.quantity}}
 
         <br> 
-        <button (click)="addToWishlist(product.id)">Add to Wishlist</button>  
+        
+        <button disabled="getProductforuserid(product.id)" (click)="addToWishlist(product.id)">Add to Wishlist</button>  
+        
+        
     </ul>
     
 

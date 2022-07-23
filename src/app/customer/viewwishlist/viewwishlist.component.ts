@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product2 } from 'src/app/product2';
+import { ProductDetail } from 'src/app/productdetail';
 import { WishlistService } from 'src/app/wishlist.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class ViewwishlistComponent implements OnInit {
 
   id!:number
   object1={userid:null,productlist:[],id:null}
-  productlist:Product2[]=[]
+  productlist:ProductDetail[]=[]
   constructor(private wishlist:WishlistService, private a:ActivatedRoute) { }
 
   ngOnInit(): void {

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import { product } from 'src/app/admin/product';
+import { ProductCreateRequest } from '/Users/harsharauniyar/angular-http/angular-http/src/app/admin/productcreaterequest';
 // import { ProductService } from '../products.service';
 import {GetproductsService} from '../products.service'
-import { Product2 } from 'src/app/product2';
+import { ProductDetail } from 'src/app/productdetail';
 import {ActivatedRoute} from '@angular/router'
 import { WishlistService } from 'src/app/wishlist.service';
+import { Wishlist } from 'src/app/wishlist';
 
 @Component({
   selector: 'app-viewproduct',
@@ -15,8 +16,10 @@ import { WishlistService } from 'src/app/wishlist.service';
 export class ViewproductComponent implements OnInit {
 
   url:string="http://localhost:3000/products"
-  productlist:Product2[]=[]
+  productlist:ProductDetail[]=[]
+  userwishlist: Wishlist[]=[]
   id!:number
+  bool=false
 
 
 
@@ -36,6 +39,30 @@ export class ViewproductComponent implements OnInit {
     
   }
 
+  getProductlistforuserid(productId:number){
+    this.bool=false
+    this.wishlist.getwishlistforuserid(this.id).subscribe(
+      data=> {
+        this.userwishlist= data.productlist
+        for (let user_wishlist of this.userwishlist){
+          if (user_wishlist.id==productId){
+            this.bool=false
+          }else{
+            this.bool=true
+          }
+        
+
+          
+        }
+       
+      
+      }
+    )
+    return this.bool
+
+    
 
 
+
+  }
 }

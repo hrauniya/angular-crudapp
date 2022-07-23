@@ -1,7 +1,7 @@
-import { Product2 } from "./product2";
+import { ProductDetail } from "./productdetail";
 
 export interface Wishlist{
     id:number
     userid:number
-    productlist:Product2[]
+    productlist:ProductDetail[]
 }

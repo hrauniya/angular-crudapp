@@ -1,5 +1,5 @@
 //rename to interface to ProductCreateRequest
-export interface product{
+export interface ProductCreateRequest{
     
     productname:string,
     price:number,

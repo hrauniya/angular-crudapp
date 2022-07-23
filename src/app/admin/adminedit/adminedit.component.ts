@@ -51,8 +51,10 @@ export class AdmineditComponent implements OnInit {
   
 
   onSubmit(editAdmins:any){
-    this.http.put('http://localhost:3000/admin/'+editAdmins.id,editAdmins).subscribe()
-    alert("Edit Complete!")
+    // this.http.put('http://localhost:3000/admin/'+editAdmins.id,editAdmins).subscribe()
+    // alert("Edit Complete!")
+
+    this.adminservice.editAdmins(editAdmins)
 
   }
 

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import { product } from './admin/product';
+import { ProductCreateRequest} from './admin/productcreaterequest';
 import { GetproductsService } from './customer/products.service';
-import { Product2 } from './product2';
+import { ProductDetail } from './productdetail';
 import { Observable } from 'rxjs';
 import { Wishlist } from './wishlist';
 
@@ -11,8 +11,8 @@ import { Wishlist } from './wishlist';
 })
 export class WishlistService {
 
-  product_data!:Product2
-  product_list:Product2[]=[]
+  product_data!:ProductDetail
+  product_list:ProductDetail[]=[]
   userset= new Set<number>()
   productset=new Set<number>()
   userobject1!:Wishlist

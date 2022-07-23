@@ -6,6 +6,7 @@ import {AdminLoginServiceService} from '/Users/harsharauniyar/angular-http/angul
 import {HttpClient} from '@angular/common/http'
 import {Router} from '@angular/router'
 import { CuruserService } from 'src/app/curuser.service';
+import { AdminService } from '../admin.service';
 
 
 
@@ -20,7 +21,7 @@ export class AdminloginComponent implements OnInit {
   curuser:string=""
   curid:number=-1
 
-  constructor(private fb:FormBuilder,private adminloginservice:AdminLoginServiceService,private http:HttpClient,private router:Router,private getcuruser:CuruserService) {
+  constructor(private fb:FormBuilder,private adminloginservice:AdminLoginServiceService,private http:HttpClient,private router:Router,private getcuruser:CuruserService,private adminservice:AdminService) {
     
   }
 
@@ -34,27 +35,28 @@ export class AdminloginComponent implements OnInit {
   
 
   isLoggedIn(){
-    this.http.get<any>("http://localhost:3000/admin")
-    .subscribe(data=>{
-      const user = data.find((a:any)=>{
-        if (a.username===this.adminlogin.value.username && a.password===this.adminlogin.value.password){
-          this.curuser=a.username
-          this.curid=a.id
-          this.getcuruser.setcurrentuser(this.curuser,this.curid)
-          return true
-        }else{
-          return false
-        }
-      });
-      if (user){
-        this.adminlogin.reset()
-        this.router.navigate(['adminlogin/adminhome'])
-      }else{
-        alert("User not found")
-        this.adminlogin.reset()
+    // this.http.get<any>("http://localhost:3000/admin")
+    // .subscribe(data=>{
+    //   const user = data.find((a:any)=>{
+    //     if (a.username===this.adminlogin.value.username && a.password===this.adminlogin.value.password){
+    //       this.curuser=a.username
+    //       this.curid=a.id
+    //       this.getcuruser.setcurrentuser(this.curuser,this.curid)
+    //       return true
+    //     }else{
+    //       return false
+    //     }
+    //   });
+    //   if (user){
+    //     this.adminlogin.reset()
+    //     this.router.navigate(['adminlogin/adminhome'])
+    //   }else{
+    //     alert("User not found")
+    //     this.adminlogin.reset()
         
-      }
-    })
+    //   }
+    // })
+    this.adminservice.isLoggedIn(this.adminlogin,this.curuser,this.curid,this.getcuruser)
   
 }
 

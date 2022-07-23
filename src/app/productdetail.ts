@@ -1,5 +1,5 @@
 //rename interface to ProductDetail
-export interface Product2{
+export interface ProductDetail{
      id:number
      productname:string,
      price:number,
