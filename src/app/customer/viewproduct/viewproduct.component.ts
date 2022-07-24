@@ -20,6 +20,7 @@ export class ViewproductComponent implements OnInit {
   userwishlist: Wishlist[]=[]
   id!:number
   bool=false
+  object2={userid:null,productlist:[],id:null}
 
 
 
@@ -39,11 +40,12 @@ export class ViewproductComponent implements OnInit {
     
   }
 
-  getProductlistforuserid(productId:number){
+  getProductlistforuserid(productId:number):boolean{
     this.bool=false
     this.wishlist.getwishlistforuserid(this.id).subscribe(
       data=> {
-        this.userwishlist= data.productlist
+        this.object2= data
+        this.userwishlist=this.object2.productlist
         for (let user_wishlist of this.userwishlist){
           if (user_wishlist.id==productId){
             this.bool=true
@@ -51,7 +53,7 @@ export class ViewproductComponent implements OnInit {
             this.bool=false
           }
         
-
+        console.log(this.userwishlist)
           
         }
        
