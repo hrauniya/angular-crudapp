@@ -52,7 +52,7 @@ export class WishlistService {
                 this.userset.add(userId)
               }
             }else{
-              alert("Product already in wishlist!")
+              alert("Product already in wishlist! Add product not in wishlist!")
             }
           })
 
