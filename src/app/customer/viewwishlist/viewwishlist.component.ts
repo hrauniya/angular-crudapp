@@ -23,10 +23,24 @@ export class ViewwishlistComponent implements OnInit {
         this.productlist=this.object1.productlist
       })
   })
+  }
+
+  onDelete(productname:string){
+    this.wishlist.getwishlistforuserid(this.id).subscribe(data=>{
+      this.object1=data
+      this.productlist=this.object1.productlist
+      this.productlist= this.productlist.filter(product=>product.productname!=productname)
+      this.wishlist.removefromwishlist(this.id,this.productlist)
+      location.reload()
+      }
+    )
+  }
 
 
 
 
+  
 
-}
+
+
 }

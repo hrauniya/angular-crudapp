@@ -46,9 +46,9 @@ export class ViewproductComponent implements OnInit {
         this.userwishlist= data.productlist
         for (let user_wishlist of this.userwishlist){
           if (user_wishlist.id==productId){
-            this.bool=false
-          }else{
             this.bool=true
+          }else{
+            this.bool=false
           }
         
 

@@ -52,7 +52,10 @@ export class WishlistService {
      
   }
 
-  removefromwishlist(){
+  removefromwishlist(userId:number,productlist:ProductDetail[]){
+    this.http.patch<any>("http://localhost:3000/wishlist/"+userId,{userid:userId,productlist:productlist}).subscribe()
+    alert("This product removed from wishlist!")
+      
 
   }
 
