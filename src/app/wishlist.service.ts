@@ -24,76 +24,44 @@ export class WishlistService {
 
   constructor(private http:HttpClient,private productservice:GetproductsService) { }
 
-  addtowishlist(productId:number,userId:number,userset:Set<number>){
-
-      
-      this.productservice.getbyid(productId).subscribe(data=>{
-        this.product_data=data
-        console.log(this.count)
-        //check if productId is already in product wishlist to ensure no duplicity
-        if (this.count>0){
-          this.http.get<any>(this.url+'/'+userId).subscribe(info=>{
-            this.userobject1=info
-            this.userwishlist=this.userobject1.productlist
-            for (let productid of this.userwishlist){
-              if (productid.id==productId){
-                this.bool=true
-                break
-              }
-  
-            }
-            if (this.bool===false){
-              this.product_list.push(this.product_data)
-              if (!userset.has(userId)){
-                this.http.patch<any>("http://localhost:3000/wishlist/"+userId,{userid:userId,productlist:this.product_list}).subscribe()
-                alert("This product was added to wishlist!")
-                // console.log(userset)
-                console.log("Patching!",userset)
-              }else{
-                this.http.post<any>("http://localhost:3000/wishlist",{userid:userId,productlist:this.product_list}).subscribe()
-                alert("This product was added to wishlist!")
-                userset.add(userId)
-                // console.log(userset)
-              }
-            }else{
-              alert("Product already in wishlist! Add product not in wishlist!")
-              console.log(userset)
-              
-            }
-          })
-
-        }else{
-          this.product_list.push(this.product_data)
-              if (userset.has(userId)){
-                this.http.patch<any>("http://localhost:3000/wishlist/"+userId,{userid:userId,productlist:this.product_list}).subscribe()
-                alert("This product was added to wishlist!")
-                
-                console.log("Printing userset:",userset)
-              }else{
-                this.http.post<any>("http://localhost:3000/wishlist",{userid:userId,productlist:this.product_list}).subscribe()
-                alert("This product was added to wishlist!")
-                userset.add(userId)
-                console.log("Posting and Printing userset:",userset)
-
-                // console.log(userset)
-              }
-              this.count=this.count+1
-
+  addtowishlist(userset:Set<number>,productId:number,userId:number,wishlist:ProductDetail[]){
+    let bool=false
+    if (userset.has(userId)){
+      for (let product of wishlist){
+        if (product.id==productId){
+          bool=true
         }
       
+      }
+      if (!bool){
+        this.productservice.getbyid(productId).subscribe(
+          productdata=>{
+            this.product_data=productdata
+            console.log(this.product_data)
+            wishlist.push(this.product_data)
+            this.http.patch<any>("http://localhost:3000/wishlist/"+userId,{userid:userId,productlist:wishlist}).subscribe()
+            alert("Product added to wishlist1!")
+          }
+        )
+      }else{
+        alert("Product already added to Wishlist!")
+      }
+
+    }else{
+      this.productservice.getbyid(productId).subscribe(
+        productdata=>{
+          this.product_data=productdata
+          wishlist.push(this.product_data)
+          this.http.post<any>("http://localhost:3000/wishlist",{userid:userId,productlist:wishlist}).subscribe()
+          userset.add(userId)
+          alert("Product added to wishlist2!")
+        }
+      )
+      
+    }
 
 
-        
-
-
-          
-              
-        })
-
-
-        
-        
-        
+      
         
 
      

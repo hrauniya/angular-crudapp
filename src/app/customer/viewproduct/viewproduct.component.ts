@@ -42,10 +42,11 @@ export class ViewproductComponent implements OnInit {
         this.id= Number(data.get("id"))
         this.http.get<any>("http://localhost:3000/wishlist/"+this.id).subscribe({
           next: data1 => {
-            this.count = data1.productlist.length;
+            this.userwishlist = data1.productlist;
+            
         },
         error: error => {
-            this.count = 0;
+            this.userwishlist=[];
             
         }
       
@@ -56,74 +57,17 @@ export class ViewproductComponent implements OnInit {
     this.userobject2=data2
     for (let objects of this.userobject2){
       this.userset.add(objects.userid)
+      
     }
-
+    console.log(this.userset)
 
     })  
 }
 
   addToWishlist(productId:number){
-    // let userset=new Set<number>();
-    // this.wishlist.addtowishlist(productId,this.id,userset)
-    this.productservice.getbyid(productId).subscribe(data=>{
-      this.product_data=data
-      console.log(this.count)
-      //check if productId is already in product wishlist to ensure no duplicity
-      if (this.count>0){
-        this.http.get<any>(this.url1+'/'+this.id).subscribe(info=>{
-          this.userobject1=info
-          console.log(typeof this.userobject1.productlist)
-          this.userwishlist=this.userobject1.productlist
-          console.log(typeof this.userwishlist)
-          for (var productid of this.userwishlist){
-            console.log(this.userwishlist)
-            console.log("Printing productID",productId)
-            if (productid.id==productId){
-              this.bool=true
-              break
-            }
-          this.bool=false
-          console.log(this.bool)
+    this.wishlist.addtowishlist(this.userset,productId,this.id,this.userwishlist)
 
-          }
-          if (this.bool===false){
-            this.product_list.push(this.product_data)
-            if (this.userset.has(this.id)){
-              this.http.patch<any>("http://localhost:3000/wishlist/"+this.id,{userid:this.id,productlist:this.product_list}).subscribe()
-              alert("This product was added to wishlist!")
-              // console.log(userset)
-              console.log("Patching!",this.userset)
-            }else{
-              this.http.post<any>("http://localhost:3000/wishlist",{userid:this.id,productlist:this.product_list}).subscribe()
-              alert("This product was added to wishlist!")
-              this.userset.add(this.id)
-              // console.log(userset)
-            }
-          }else{
-            alert("Product already in wishlist! Add product not in wishlist!")
-            console.log(this.userset)
-            
-          }
-        })
-
-      }else{
-        this.product_list.push(this.product_data)
-            if (this.userset.has(this.id)){
-              this.http.patch<any>("http://localhost:3000/wishlist/"+this.userset,{userid:this.id,productlist:this.product_list}).subscribe()
-              alert("This product was added to wishlist!")
-              
-              console.log("Printing userset:",this.userset)
-            }else{
-              this.http.post<any>("http://localhost:3000/wishlist",{userid:this.id,productlist:this.product_list}).subscribe()
-              alert("This product was added to wishlist!")
-              this.userset.add(this.id)
-              console.log("Posting and Printing userset:",this.userset)
-
-              // console.log(userset)
-            }
-            this.count=this.count+1
-
-      }
+  }
     
 
 
@@ -132,12 +76,12 @@ export class ViewproductComponent implements OnInit {
 
         
             
-      })
+     
 
 
       
     
-  }
+  
 
   getProductlistforuserid(productId:number):boolean{
     // this.bool=false
