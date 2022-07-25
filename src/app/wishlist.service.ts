@@ -24,11 +24,12 @@ export class WishlistService {
 
   constructor(private http:HttpClient,private productservice:GetproductsService) { }
 
-  addtowishlist(productId:number,userId:number){
+  addtowishlist(productId:number,userId:number,userset:Set<number>){
 
       
       this.productservice.getbyid(productId).subscribe(data=>{
         this.product_data=data
+        console.log(this.count)
         //check if productId is already in product wishlist to ensure no duplicity
         if (this.count>0){
           this.http.get<any>(this.url+'/'+userId).subscribe(info=>{
@@ -43,28 +44,38 @@ export class WishlistService {
             }
             if (this.bool===false){
               this.product_list.push(this.product_data)
-              if (this.userset.has(userId)){
+              if (!userset.has(userId)){
                 this.http.patch<any>("http://localhost:3000/wishlist/"+userId,{userid:userId,productlist:this.product_list}).subscribe()
                 alert("This product was added to wishlist!")
+                // console.log(userset)
+                console.log("Patching!",userset)
               }else{
                 this.http.post<any>("http://localhost:3000/wishlist",{userid:userId,productlist:this.product_list}).subscribe()
                 alert("This product was added to wishlist!")
-                this.userset.add(userId)
+                userset.add(userId)
+                // console.log(userset)
               }
             }else{
               alert("Product already in wishlist! Add product not in wishlist!")
+              console.log(userset)
+              
             }
           })
 
         }else{
           this.product_list.push(this.product_data)
-              if (this.userset.has(userId)){
+              if (userset.has(userId)){
                 this.http.patch<any>("http://localhost:3000/wishlist/"+userId,{userid:userId,productlist:this.product_list}).subscribe()
                 alert("This product was added to wishlist!")
+                
+                console.log("Printing userset:",userset)
               }else{
                 this.http.post<any>("http://localhost:3000/wishlist",{userid:userId,productlist:this.product_list}).subscribe()
                 alert("This product was added to wishlist!")
-                this.userset.add(userId)
+                userset.add(userId)
+                console.log("Posting and Printing userset:",userset)
+
+                // console.log(userset)
               }
               this.count=this.count+1
 
