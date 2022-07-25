@@ -40,7 +40,7 @@ export class WishlistService {
             console.log(this.product_data)
             wishlist.push(this.product_data)
             this.http.patch<any>("http://localhost:3000/wishlist/"+userId,{userid:userId,productlist:wishlist}).subscribe()
-            alert("Product added to wishlist1!")
+            alert("Product added to wishlist!")
           }
         )
       }else{
@@ -54,7 +54,7 @@ export class WishlistService {
           wishlist.push(this.product_data)
           this.http.post<any>("http://localhost:3000/wishlist",{userid:userId,productlist:wishlist}).subscribe()
           userset.add(userId)
-          alert("Product added to wishlist2!")
+          alert("Product added to wishlist!")
         }
       )
       
