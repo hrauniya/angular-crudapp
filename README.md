@@ -1,5 +1,8 @@
 # AngularHttp
 
+Simple ecommerce webapp to practice Angular
+Please refer to "Angular CRUD application" for the documentation for this practice project
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.3.
 
 ## Development server
